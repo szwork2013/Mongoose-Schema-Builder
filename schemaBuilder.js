@@ -1,13 +1,7 @@
-/*
- * Schema Builder takes a short-hand JSON schema and converts it into a verbose
- * Mongoose schema.
- */
-
 var ME       = module.exports
   , fs       = require('fs')
   , async    = require('async')
-  , mongoose = require('mongoose')
-  , utils    = require('./utils/utils');
+  , mongoose = require('mongoose');
 
 /*
  * Start building the schema given in filename.
@@ -94,7 +88,7 @@ ME.group = function (schema, groupDefinition) {
 //    console.log('group()');
 //    console.log(groupDefinition);
 
-  var newGroupDefinition = utils.extend(true, groupDefinition)
+  var newGroupDefinition = extender.extend(true, groupDefinition)
     , groupOut = {};
 
   // Cycle group properties (run commands first)
@@ -112,7 +106,7 @@ ME.group = function (schema, groupDefinition) {
             case 'include':
               var reusable = schema.reusable[cmd[2]];
               if (reusable)
-                newGroupDefinition = utils.extend(true, newGroupDefinition, reusable);
+                newGroupDefinition = extender.extend(true, newGroupDefinition, reusable);
               break;
           }
         }
