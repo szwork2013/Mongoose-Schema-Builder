@@ -1,0 +1,15 @@
+{
+  "publishConfig": { "registry": "https://newgen.registry.nodejitsu.com" },
+  "name": "schema-builder",
+  "version": "1.0.0",
+  "main": "schemaBuilder.js",
+  "author": "Josh Cole <josh.cole@newgenrecruitment.com>",
+  "contributors": [{
+    "name": "Josh Cole",
+    "email": "josh.cole@newgenrecruitment.com"
+  }],
+  "dependencies": {
+    "async": "0.9.x",
+    "mongoose": "3.8.x"
+  }
+}
