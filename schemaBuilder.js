@@ -1,7 +1,8 @@
 var ME       = module.exports
   , fs       = require('fs')
   , async    = require('async')
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , extender = require('ng-extender');
 
 /*
  * Start building the schema given in filename.
