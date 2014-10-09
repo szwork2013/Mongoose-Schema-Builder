@@ -1,6 +1,6 @@
 {
   "publishConfig": { "registry": "https://newgen.registry.nodejitsu.com" },
-  "name": "schema-builder",
+  "name": "ng-schema-builder",
   "version": "1.0.0",
   "main": "schemaBuilder.js",
   "author": "Josh Cole <josh.cole@newgenrecruitment.com>",
