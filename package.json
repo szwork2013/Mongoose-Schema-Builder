@@ -1,5 +1,6 @@
 {
   "publishConfig": { "registry": "https://newgen.registry.nodejitsu.com" },
+  "repository": { "type": "git", "url": "https://github.com/NewGenRecruitment/Schema-Builder.git" },
   "name": "ng-schema-builder",
   "version": "1.0.2",
   "main": "schemaBuilder.js",
