@@ -1,17 +1,20 @@
 var ME       = module.exports
-  , fs       = require('fs')
+  , extender = require('ng-extender')
   , async    = require('async')
+  , fs       = require('fs')
   , mongoose = require('mongoose')
-  , extender = require('ng-extender');
+  , _        = require('underscore');
 
 /*
- * Start building the schema given in filename.
+ * Start building the schema given in filename. The 'input' can be either an
+ * absolute path to a schema file OR a schema object.
+ * finish(err, mongooseModels)
  */
-ME.build = function (filename, finish) {
+ME.build = function (input, finish) {
 
   async.waterfall([
     function (callback) {
-      return callback(null, filename, finish);  //pass our existing values into the chain
+      return callback(null, input, finish);  //pass our existing values into the chain
     },
     ME.loadFile,
     ME.parseModels
@@ -22,14 +25,25 @@ ME.build = function (filename, finish) {
 /*
  * Load in the file and parse it as JSON.
  */
-ME.loadFile = function (filename, finish, callback) {
+ME.loadFile = function (input, finish, callback) {
 
-  fs.readFile(filename, 'utf8', function (err, data) {
-    if (err) return callback(err, filename, finish);
+  // An object has been passed in, not a filename
+  if (_.isObject(input)) return callback(null, finish, input);
 
-    var schema = JSON.parse(data);
+  // OR we have a schema file
+  fs.readFile(input, 'utf8', function (err, data) {
 
-    return callback(null, filename, finish, schema);
+    if (err) return callback(err, finish);
+
+    try {
+      var schema = JSON.parse(data);
+    }
+    catch (e) {
+      return callback(e, finish);
+    }
+
+    return callback(null, finish, schema);
+
   });
 
 };
@@ -37,7 +51,7 @@ ME.loadFile = function (filename, finish, callback) {
 /*
  * Parse all models in the schema.
  */
-ME.parseModels = function (filename, finish, schema, callback) {
+ME.parseModels = function (finish, schema, callback) {
 
   var mongooseModels = {};
 
@@ -56,8 +70,16 @@ ME.parseModels = function (filename, finish, schema, callback) {
   }
 
   // Finished!
-  return callback(null, filename, finish, schema, mongooseModels);
+  return callback(null, finish, schema, mongooseModels);
 
+};
+
+/*
+ * Call the finish() callback with the result.
+ */
+ME.finishBuild = function (err, finish, schema, mongooseModels) {
+  if (err) return finish(err);
+  return finish(null, mongooseModels);
 };
 
 /*
@@ -70,15 +92,6 @@ ME.mongooseify = function (modelProcessed, modelName) {
 
   return mongooseModel;
 
-};
-
-/*
- * Call the finish() callback with the result.
- */
-ME.finishBuild = function (err, filename, finish, schema, models) {
-
-  if (err) return finish(err);
-  return finish(null, models);
 };
 
 /*
