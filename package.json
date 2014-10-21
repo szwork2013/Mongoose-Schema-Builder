@@ -2,7 +2,7 @@
   "publishConfig": { "registry": "https://newgen.registry.nodejitsu.com" },
   "repository": { "type": "git", "url": "https://github.com/NewGenRecruitment/Schema-Builder.git" },
   "name": "ng-schema-builder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "schemaBuilder.js",
   "author": "Josh Cole <josh.cole@newgenrecruitment.com>",
   "contributors": [{
