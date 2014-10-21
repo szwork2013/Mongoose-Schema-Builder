@@ -2,15 +2,17 @@ var ME       = module.exports
   , extender = require('ng-extender')
   , async    = require('async')
   , fs       = require('fs')
-  , mongoose = require('mongoose')
-  , _        = require('underscore');
+  , _        = require('underscore')
+  , mongoose;
 
 /*
  * Start building the schema given in filename. The 'input' can be either an
  * absolute path to a schema file OR a schema object.
  * finish(err, mongooseModels)
  */
-ME.build = function (input, finish) {
+ME.build = function (mongooseInstance, input, finish) {
+
+  mongoose = mongooseInstance;
 
   async.waterfall([
     function (callback) {
