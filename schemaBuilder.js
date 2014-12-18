@@ -58,12 +58,12 @@ ME.parseModels = function (finish, schema, callback) {
   var mongooseModels = {};
 
   // Cycle models
-  for (var m in schema.models) {
+  for (var m in schema.collections) {
 
     // Skip prototype properties!
-    if (!schema.models.hasOwnProperty(m)) continue;
+    if (!schema.collections.hasOwnProperty(m)) continue;
 
-    var modelDefinition = schema.models[m]
+    var modelDefinition = schema.collections[m]
       , modelProcessed  = ME.group(schema, modelDefinition);
 
     // Finish the conversion of this model
@@ -120,7 +120,7 @@ ME.group = function (schema, groupDefinition) {
         if (flag) {
           switch (cmd[1]) {
             case 'include':
-              var reusable = schema.reusable[cmd[2]];
+              var reusable = schema.reusables[cmd[2]];
               if (reusable)
                 newGroupDefinition = extender.extend(true, newGroupDefinition, reusable);
               break;
