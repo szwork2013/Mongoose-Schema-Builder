@@ -1,14 +1,21 @@
 {
-  "publishConfig": { "registry": "https://newgen.registry.nodejitsu.com" },
-  "repository": { "type": "git", "url": "https://github.com/NewGenRecruitment/Schema-Builder.git" },
+  "publishConfig": {
+    "registry": "https://newgen.registry.nodejitsu.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NewGenRecruitment/Schema-Builder.git"
+  },
   "name": "ng-schema-builder",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "main": "schemaBuilder.js",
   "author": "Josh Cole <josh.cole@newgenrecruitment.com>",
-  "contributors": [{
-    "name": "Josh Cole",
-    "email": "josh.cole@newgenrecruitment.com"
-  }],
+  "contributors": [
+    {
+      "name": "Josh Cole",
+      "email": "josh.cole@newgenrecruitment.com"
+    }
+  ],
   "dependencies": {
     "ng-extender": "1.0.x",
     "async": "0.9.x",
