@@ -20,5 +20,9 @@
     "ng-extender": "1.0.x",
     "async": "0.9.x",
     "underscore": "1.7.x"
+  },
+  "devDependencies": {
+    "ng-database-schema": "2.1.x",
+    "mongoose": "3.8.x"
   }
 }
