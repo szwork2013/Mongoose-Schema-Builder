@@ -1,28 +1,27 @@
 {
-  "publishConfig": {
-    "registry": "https://newgen.registry.nodejitsu.com"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NewGenRecruitment/Schema-Builder.git"
+    "url": "https://github.com/SaikoJosh/Mongoose-Schema-Builder.git"
   },
-  "name": "ng-schema-builder",
+  "bugs": {
+    "url": "https://github.com/SaikoJosh/Mongoose-Schema-Builder/issues"
+  },
+  "name": "mongoose-schema-builder",
   "version": "1.1.1",
   "main": "schemaBuilder.js",
-  "author": "Josh Cole <josh.cole@newgenrecruitment.com>",
+  "author": "Josh Cole <saikojosh@gmail.com>",
   "contributors": [
     {
       "name": "Josh Cole",
-      "email": "josh.cole@newgenrecruitment.com"
+      "email": "saikojosh@gmail.com"
     }
   ],
   "dependencies": {
-    "ng-extender": "1.0.x",
     "async": "0.9.x",
+    "object-assign-deep": "0.0.x",
     "underscore": "1.7.x"
   },
   "devDependencies": {
-    "ng-database-schema": "2.1.x",
-    "mongoose": "3.8.x"
+
   }
 }

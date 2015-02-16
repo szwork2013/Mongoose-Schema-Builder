@@ -1,9 +1,14 @@
-var ME       = module.exports
-  , extender = require('ng-extender')
-  , async    = require('async')
-  , fs       = require('fs')
-  , _        = require('underscore')
-  , mongoose;
+/*
+ *
+ * MONGOOSE SCHEMA BUILDER.
+ */
+
+var ME               = module.exports;
+var objectAssignDeep = require('object-assign-deep');
+var async            = require('async');
+var fs               = require('fs');
+var _                = require('underscore');
+var mongoose;
 
 /*
  * Start building the schema given in filename. The 'input' can be either an
@@ -104,7 +109,7 @@ ME.group = function (schema, groupDefinition) {
 //    console.log('group()');
 //    console.log(groupDefinition);
 
-  var newGroupDefinition = extender.extend(true, groupDefinition)
+  var newGroupDefinition = objectAssignDeep({}, groupDefinition)
     , groupOut = {};
 
   // Cycle group properties (run commands first)
@@ -122,7 +127,7 @@ ME.group = function (schema, groupDefinition) {
             case 'include':
               var reusable = schema.reusables[cmd[2]];
               if (reusable)
-                newGroupDefinition = extender.extend(true, newGroupDefinition, reusable);
+                newGroupDefinition = objectAssignDeep({}, newGroupDefinition, reusable);
               break;
           }
         }
