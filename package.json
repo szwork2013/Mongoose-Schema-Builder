@@ -7,7 +7,7 @@
     "url": "https://github.com/SaikoJosh/Mongoose-Schema-Builder/issues"
   },
   "name": "mongoose-schema-builder",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Schema Builder takes a short-hand JSON schema and converts it into a verbose Mongoose schema.",
   "main": "schemaBuilder.js",
   "author": "Josh Cole <saikojosh@gmail.com>",
